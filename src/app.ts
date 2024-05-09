@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express';
 import { Server } from 'http';
 import { UserController } from './users/users.controller';
 import { ILogger } from './logger/logger.interface';
@@ -9,7 +9,6 @@ import 'reflect-metadata';
 import { IConfigService } from './config/config.service.interface';
 import { IExceptionFilter } from './errors/exception.filter.interface';
 import { PrismaService } from './database/prisma.service';
-
 @injectable()
 export class App {
 	app: Express;
@@ -43,7 +42,7 @@ export class App {
 		this.useMiddleware();
 		this.useRouter();
 		this.useExceptionFilters();
-		this.prismaService.connect();
+		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`Server started on port:${this.port}`);
 	}
