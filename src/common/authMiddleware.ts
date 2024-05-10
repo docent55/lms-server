@@ -6,7 +6,6 @@ export class AuthMiddleware implements IMiddleware {
 	constructor(private secret: string) {}
 
 	execute(req: Request, res: Response, next: NextFunction) {
-		console.log('123');
 		if (req.headers.authorization) {
 			const token = req.headers.authorization.split(' ')[1];
 			verify(token, this.secret, (err, payload) => {
