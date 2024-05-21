@@ -1,4 +1,4 @@
-import express, { Express, NextFunction, Request, Response } from 'express';
+import express, { Express } from 'express';
 import { Server } from 'http';
 import { UserController } from './users/users.controller';
 import { ILogger } from './logger/logger.interface';
@@ -48,5 +48,9 @@ export class App {
 		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`Server started on port:${this.port}`);
+	}
+
+	public close() {
+		this.server.close();
 	}
 }
