@@ -44,6 +44,27 @@ export class UserController extends BaseController implements IUserController {
 		]);
 	}
 
+	/**
+	 * @openapi
+	 * '/users/login':
+	 *  post:
+	 *     tags:
+	 *     - User
+	 *     summary: Login
+	 *     requestBody:
+	 *      required: true
+	 *      content:
+	 *        application/json:
+	 *           schema:
+	 *              $ref: '#/components/schemas/UserLoginDto'
+	 *     responses:
+	 *      200:
+	 *        description: Success
+	 *        content:
+	 *          application/json:
+	 *            schema:
+	 *              $ref: '#/components/schemas/LoginUserResponse'
+	 */
 	async login(req: Request<object, object, UserLoginDto>, res: Response, next: NextFunction) {
 		const result = await this.userService.validateUser(req.body);
 

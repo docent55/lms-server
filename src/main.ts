@@ -14,15 +14,30 @@ import { ConfigService } from './config/config.service';
 import { PrismaService } from './database/prisma.service';
 import { UsersRepository } from './users/users.repository';
 import { IUsersRepository } from './users/users.repository.interface';
+import { IArticleRepository } from './article/article.repository.interface';
+import { ArticleRepository } from './article/article.repository';
+import { IArticleService } from './article/article.service.interface';
+import { ArticleService } from './article/article.service';
+import { IArticleController } from './article/article.controller.interface';
+import { ArticleController } from './article/article.controller';
+import { ISwaggerService } from './swagger/swagger.service.interface';
+import { SwaggerService } from './swagger/swagger.service';
 
 export const AppBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IConfigService>(TYPES.ConfigService).to(ConfigService).inSingletonScope();
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
+	bind<ISwaggerService>(TYPES.SwaggerService).to(SwaggerService).inSingletonScope();
 	bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
-	bind<IUserController>(TYPES.UserController).to(UserController);
 	bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();
+
+	bind<IUserController>(TYPES.UserController).to(UserController);
 	bind<IUserService>(TYPES.UserService).to(UserService);
 	bind<IUsersRepository>(TYPES.UsersRepository).to(UsersRepository).inSingletonScope();
+
+	bind<IArticleController>(TYPES.ArticleController).to(ArticleController).inSingletonScope();
+	bind<IArticleService>(TYPES.ArticleService).to(ArticleService).inSingletonScope();
+	bind<IArticleRepository>(TYPES.ArticleRepository).to(ArticleRepository).inSingletonScope();
+
 	bind<App>(TYPES.Application).to(App);
 });
 
