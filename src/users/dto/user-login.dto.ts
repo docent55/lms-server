@@ -13,11 +13,9 @@ import { IsEmail, IsString } from 'class-validator';
  *        email:
  *          type: string
  *          default: ivan@mail.com
- *        name:
  *        password:
  *          type: string
  *          default: password12345678
- *        passwordConfirmation:
  *    LoginUserResponse:
  *      type: object
  *      properties:
