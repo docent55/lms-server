@@ -11,7 +11,6 @@ export class SwaggerService implements ISwaggerService {
 	constructor(@inject(TYPES.ILogger) private logger: ILogger) {}
 
 	init(app: Express) {
-		// todo - вынести работу со свагером
 		const jsDocOption: swaggerJsdoc.Options = {
 			definition: {
 				openapi: '3.0.0',

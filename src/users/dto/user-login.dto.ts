@@ -16,13 +16,6 @@ import { IsEmail, IsString } from 'class-validator';
  *        password:
  *          type: string
  *          default: password12345678
- *    LoginUserResponse:
- *      type: object
- *      properties:
- *        email:
- *          type: string
- *        id:
- *          type: number
  */
 
 export class UserLoginDto {

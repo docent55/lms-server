@@ -63,7 +63,10 @@ export class UserController extends BaseController implements IUserController {
 	 *        content:
 	 *          application/json:
 	 *            schema:
-	 *              $ref: '#/components/schemas/LoginUserResponse'
+	 *              type: object
+	 *              properties:
+	 *                jwt:
+	 *                  type: string
 	 */
 	async login(req: Request<object, object, UserLoginDto>, res: Response, next: NextFunction) {
 		const result = await this.userService.validateUser(req.body);
@@ -77,6 +80,32 @@ export class UserController extends BaseController implements IUserController {
 		this.ok(res, { jwt });
 	}
 
+	/**
+	 * @openapi
+	 * '/users/register':
+	 *  post:
+	 *     tags:
+	 *     - User
+	 *     summary: Register
+	 *     requestBody:
+	 *      required: true
+	 *      content:
+	 *        application/json:
+	 *           schema:
+	 *              $ref: '#/components/schemas/RegisterUserDto'
+	 *     responses:
+	 *      200:
+	 *        description: Success
+	 *        content:
+	 *          application/json:
+	 *            schema:
+	 *              type: object
+	 *              properties:
+	 *                email:
+	 *                  type: string
+	 *                id:
+	 *                  type: number
+	 */
 	async register(
 		{ body }: Request<object, object, UserRegisterDto>,
 		res: Response,
