@@ -46,7 +46,7 @@ export class UserController extends BaseController implements IUserController {
 
 	/**
 	 * @openapi
-	 * '/users/login':
+	 * '/api/users/login':
 	 *  post:
 	 *     tags:
 	 *     - User
@@ -82,7 +82,7 @@ export class UserController extends BaseController implements IUserController {
 
 	/**
 	 * @openapi
-	 * '/users/register':
+	 * '/api/users/register':
 	 *  post:
 	 *     tags:
 	 *     - User

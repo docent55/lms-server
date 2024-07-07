@@ -39,8 +39,8 @@ export class App {
 	}
 
 	useRouter() {
-		this.app.use('/users', this.userController.router);
-		this.app.use('/articles', this.articleController.router);
+		this.app.use('/api/users', this.userController.router);
+		this.app.use('/api/articles', this.articleController.router);
 	}
 
 	useExceptionFilters() {
